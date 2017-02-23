@@ -83,4 +83,6 @@ plt.show()
 
 A = np.c_[ df['master_workers'], df['node1_workers'], df['node2_workers']]
 C,_,_,_ = scipy.linalg.lstsq(A, df['speed'])    # coefficients
-print(C)
+
+a, b, c= C
+print(f"a: {a:.2f}, b: {b:.2f}, c: {c:.2f}")
