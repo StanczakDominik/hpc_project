@@ -20,14 +20,14 @@ def conf_str(wm, w):
     """funkcja zwracająca tekst stringa konfiguracyjnego
     np. z argumentami 1, 1, 2:
     master pcmaster01
-    
+
     worker pcmaster01
-    
+
     worker pcnode01
 
     worker pcnode02
     worker pcnode02"""
-    # TODO: przerobić pod pcnode03 (w1=w2=w3) 
+    # TODO: przerobić pod pcnode03 (w1=w2=w3)
     return result_string + wm * masterworker + w * n1worker + w * n2worker + w * n3worker
 
 # ile maksymalnie może być workerów na każdym node
@@ -36,7 +36,8 @@ max_workers_node = 4 # wszystkie 4 rdzenie
 
 for i in range(max_workers_master, -1, -1): # [3 2 1 0]
     for j in range(max_workers_node, -1, -1): # [ 4 3 2 1 0]
-        l = k = j    
+        l = j
+        k = j
         total_workers = i + j + k + l # suma
         if total_workers > 5: # warunek zabezpieczający przed bardzo długimi runami, można zastąpić if True jeśli jesteśmy odważni
             index = str(i)+str(j)+str(k)+str(l) # string np. 014, działa dobrze dopóki pracujemy na prockach <10rdzeniowych
@@ -58,7 +59,7 @@ for i in range(max_workers_master, -1, -1): # [3 2 1 0]
                 print("finished run")
                 result_output = var.decode("utf-8") # 5. konwersja na utf-8 do stringa
                 result_variable = re.findall('HEREISRESULT(.*?)HEREENDRESULT', result_output, re.DOTALL)[0]
-                #6. ^ regexem wyciągam zmienną ze stringa którego printuję w kodzie                  
+                #6. ^ regexem wyciągam zmienną ze stringa którego printuję w kodzie
 
                 print(result_variable)
                 with open(output_file_path, "w") as output_file:
