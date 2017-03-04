@@ -27,7 +27,6 @@ def conf_str(wm, w):
 
     worker pcnode02
     worker pcnode02"""
-    # TODO: przerobić pod pcnode03 (w1=w2=w3)
     return result_string + wm * masterworker + w * n1worker + w * n2worker + w * n3worker
 
 # ile maksymalnie może być workerów na każdym node
